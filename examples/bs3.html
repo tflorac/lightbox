@@ -255,7 +255,7 @@
                             <tr>
                                 <td>type</td>
                                 <td>Force the lightbox into image/YouTube mode.</td>
-                                <td><code>data-type="(image|youtube|vimeo)"</code></td>
+                                <td><code>data-type="(image|youtube|vimeo|dailymotion)"</code></td>
                             </tr>
                             </tbody>
                         </table>
@@ -362,24 +362,35 @@
                     <p>You cannot embed Vimeo videos using the standard url (ie http://vimeo.com/80629469); you must link to the embed source (ie player.vimeo.com/video/80629469). This will mean your link url - if the JavaScript fails, will open the full screen player (try opening the first link below in a new tab); the solution to this is to set the lightbox source directly - the second link below does this.</p>
                     <div data-code="example-3-b">
                         <p><a href="http://player.vimeo.com/video/80629469" data-toggle="lightbox">City Lights - from Colin Rich (using embed link)</a></p>
-                        <p><a href="http://vimeo.com/80629469" data-remote="http://player.vimeo.com/video/80629469" data-toggle="lightbox">City Lights - from Colin Rich</a> (with reccommended <code>data-remote</code> setting)</p>
+                        <p><a href="http://vimeo.com/80629469" data-remote="http://player.vimeo.com/video/80629469" data-toggle="lightbox">City Lights - from Colin Rich</a> (with recommended <code>data-remote</code> setting)</p>
                     </div>
                     <code data-code="example-3-b" data-trim="all"></code>
+                    <h4>Dailymotion</h4>
+                    <p>You cannot embed Dailymotion videos using the standard url (ie https://dai.ly/x6xailo); you must link
+                        to the embed source (ie https://www.dailymotion.com/embed/video/x6xailo). This will mean your link url - if
+                        the JavaScript fails, will open the full screen player (try opening the first link below in a new
+                        tab); the solution to this is to set the lightbox source directly - the second link below does this.</p>
+                    <div data-code="example-3-c">
+                        <p><a href="https://www.dailymotion.com/embed/video/x6xailo" data-toggle="lightbox">Robin des Bois (using embed link)</a></p>
+                        <p><a href="https://dai.ly/x6xailo" data-remote="https://www.dailymotion.com/embed/video/x6xailo" data-toggle="lightbox">Robin des bois</a> (with recommended <code>data-remote</code> setting)
+                        </p>
+                    </div>
+                    <code data-code="example-3-c" data-trim="all"></code>
                     <h4>Instagram</h4>
                     <p></p>
-                    <div data-code="example-3-c">
+                    <div data-code="example-3-d">
                         <p><a href="http://instagram.com/p/pZfG1fPfuX/" data-toggle="lightbox" data-title="Plug for our new service">GOtags.co.uk</a></p>
                         <p>This also works with photos: <a href="//instagram.com/p/0wbypvPfmQ/" data-toggle="lightbox">GOtags.co.uk</a></p>
                     </div>
-                    <code data-code="example-3-c" data-trim="all"></code>
+                    <code data-code="example-3-d" data-trim="all"></code>
                     <h4>Forcing width</h4>
                     <p>Set the width of the video</p>
-                    <div data-code="example-3-d">
+                    <div data-code="example-3-e">
                         <p><a href="https://www.youtube.com/watch?v=e-ORhEE9VVg" data-toggle="lightbox">Taylor Swift - Blank Space (standard)</a></p>
                         <p><a href="https://www.youtube.com/watch?v=e-ORhEE9VVg" data-toggle="lightbox" data-width="640">Taylor Swift - Blank Space (640 x 360)</a></p>
                         <p><a href="https://www.youtube.com/watch?v=e-ORhEE9VVg" data-toggle="lightbox" data-width="1280">Taylor Swift - Blank Space (1280 x 780)</a></p>
                     </div>
-                    <code data-code="example-3-d" data-trim="all"></code>
+                    <code data-code="example-3-e" data-trim="all"></code>
 
                     <!-- i hope your coworkers think you're listening to some justin and taylor -->
 

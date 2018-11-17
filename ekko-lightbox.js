@@ -10,7 +10,7 @@ const Lightbox = (($) => {
 		maxHeight: 9999,
 		showArrows: true, //display the left / right arrows or not
 		wrapping: true, //if true, gallery loops infinitely
-		type: null, //force the lightbox into image / youtube mode. if null, or not image|youtube|vimeo; detect it
+		type: null, //force the lightbox into image / youtube mode. if null, or not image|youtube|vimeo|dailymotion; detect it
 		alwaysShowClose: false, //always show the close button, even if there is no title
 		loadingMessage: '<div class="ekko-lightbox-loader"><div><div></div><div></div></div></div>', // http://tobiasahlin.com/spinkit/
 		leftArrow: '<span>&#10094;</span>',
@@ -259,11 +259,13 @@ const Lightbox = (($) => {
 				type = 'youtube';
 			if(!type && this._getVimeoId(src))
 				type = 'vimeo';
+			if(!type && this._getDailymotionId(src))
+				type = 'dailymotion';
 			if(!type && this._getInstagramId(src))
 				type = 'instagram';
-			if(type == 'audio' || type == 'video' || (!type && this._isMedia(src)))
+			if(type === 'audio' || type === 'video' || (!type && this._isMedia(src)))
 				type = 'media';
-			if(!type || ['image', 'youtube', 'vimeo', 'instagram', 'media', 'url'].indexOf(type) < 0)
+			if(!type || ['image', 'youtube', 'vimeo', 'dailymotion', 'instagram', 'media', 'url'].indexOf(type) < 0)
 				type = 'url';
 
 			return type;
@@ -317,7 +319,7 @@ const Lightbox = (($) => {
 			let currentRemote = this._$element.attr('data-remote') || this._$element.attr('href')
 			let currentType = this._detectRemoteType(currentRemote, this._$element.attr('data-type') || false)
 
-			if(['image', 'youtube', 'vimeo', 'instagram', 'media', 'url'].indexOf(currentType) < 0)
+			if(['image', 'youtube', 'vimeo', 'dailymotion', 'instagram', 'media', 'url'].indexOf(currentType) < 0)
 				return this._error(this._config.strings.type)
 
 			switch(currentType) {
@@ -330,6 +332,9 @@ const Lightbox = (($) => {
 					break;
 				case 'vimeo':
 					this._showVimeoVideo(this._getVimeoId(currentRemote), $toUse);
+					break;
+				case 'dailymotion':
+					this._showDailymotionVideo(this._getDailymotionId(currentRemote), $toUse);
 					break;
 				case 'instagram':
 					this._showInstagramVideo(this._getInstagramId(currentRemote), $toUse);
@@ -354,6 +359,10 @@ const Lightbox = (($) => {
 
 		_getVimeoId(string) {
 			return string && string.indexOf('vimeo') > 0 ? string : false
+		}
+
+		_getDailymotionId(string) {
+			return string && string.indexOf('dailymotion') > 0 ? string : false
 		}
 
 		_getInstagramId(string) {
@@ -437,6 +446,12 @@ const Lightbox = (($) => {
 		}
 
 		_showVimeoVideo(id, $containerForElement) {
+			let width = this._$element.data('width') || 500
+			let height = this._$element.data('height') ||  width / ( 560/315 )
+			return this._showVideoIframe(id + '?autoplay=1', width, height, $containerForElement)
+		}
+
+		_showDailymotionVideo(id, $containerForElement) {
 			let width = this._$element.data('width') || 500
 			let height = this._$element.data('height') ||  width / ( 560/315 )
 			return this._showVideoIframe(id + '?autoplay=1', width, height, $containerForElement)
